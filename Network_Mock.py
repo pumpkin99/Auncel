@@ -41,9 +41,7 @@ def network_gen_ln_topo(capacity_factor):
     with open(file_path, "wb") as f:
         pickle.dump(bi_G, f)
     return bi_G
-    # nx.draw_networkx(bi_G)
-    # plt.show()
-    # print(bi_G.edges(data=True))
+
 
 
 
@@ -72,15 +70,6 @@ def network_gen_er_graph_v2(node_nb=16083, prob=0.0006):
         bi_G.add_edge(edge[0], edge[1], weight=weight//2)
         bi_G.add_edge(edge[1], edge[0], weight=weight//2)
 
-        # nx.draw_networkx(G)
-        # plt.show()
-
-        # nx.draw_networkx(bi_G)
-        # plt.show()
-        # print(bi_G.edges(data=True))
-
-        # write edgelist to grid.edgelist
-        # nx.write_edgelist(bi_G, path="./data/network/graph.edgelist", delimiter=":")
 
 
     # save the graph to file
@@ -144,7 +133,7 @@ if __name__ == '__main__':
     '''
     To generate the network by ER random graph
     '''
-    network_gen_er_graph_v2(node_nb=16083, prob=0.0006)
+    # network_gen_er_graph_v2(node_nb=16083, prob=0.0006)
 
 
     '''
@@ -153,9 +142,8 @@ if __name__ == '__main__':
     param 'capacity_factor' is only valid when topo='LN_topo'
     params 'node_nb' and 'prob' are valid only when topo='ER_graph'
     '''
-    # G = load_network(topo='LN_topo', capacity_factor=10, node_nb=16083, prob=0.0006)
-    #
-    # print('node number:' + str(len(G.nodes)))
-    # print('channel number:' + str(int(len(G.edges) / 2)))
-    # print(G.edges(data=True))
+    G = load_network(topo='LN_topo', capacity_factor=10, node_nb=16083, prob=0.0006)
+
+    print('node number:' + str(len(G.nodes)))
+    print('channel number:' + str(int(len(G.edges) / 2)))
 
